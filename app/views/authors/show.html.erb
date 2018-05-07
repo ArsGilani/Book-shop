@@ -1,0 +1,10 @@
+<div class="container">
+	<h1><%= @author.title%></h1>
+	<div class="disc-box">
+		<p><%= image_tag "/uploads/authors/#{@author.id}", size: '100' %></p>		
+		<p><%= @author.description %></p>
+	</div>
+	
+	<br>
+	<%= link_to 'Back', authors_path, class: "btn btn-primary"%>
+</div>

@@ -1,0 +1,27 @@
+<div class="container">
+	<h1>Authors</h1>
+	<%= link_to 'New Author', new_author_path %>
+	<table class="table table-striped">
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Picture</th>			
+			<th>Actions</th>
+		</tr>
+		<% @authors.each do |author| %>
+		<tr>
+			<td class="author_link"><%= author.title %></td>
+			<td><%= author.description %></td>
+			<td><%= image_tag "/uploads/authors/#{author.id}", size:  '80' %></td>
+			<td class="td_link">
+				<%= link_to 'View', author_path(author) %>
+				<%= link_to 'Edit', edit_author_path(author) %>
+				<%= link_to 'Delete', author_path(author),
+					method: :delete,
+					data: {confirm: 'Do you want to remove this Author?'}
+				 %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

@@ -1,0 +1,26 @@
+<div class="container">
+	<h1>Genre</h1>
+	<%= link_to 'New Genre', new_genre_path %>
+	<table class="table table-striped">
+		<tr>
+			<th>Title</th>
+			<th>Description</th>			
+			<th>Actions</th>
+		</tr>
+		<% @genres.each do |genre| %>
+		<tr>
+			<td><%= genre.title %></td>
+			<td><%= genre.description %></td>
+			
+			<td class="td_link">
+				<%= link_to 'View', genre_path(genre) %>
+				<%= link_to 'Edit', edit_genre_path(genre) %>
+				<%= link_to 'Delete', genre_path(genre),
+					method: :delete,
+					data: {confirm: 'Do you want to remove this Genre?'}
+				 %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+</div>

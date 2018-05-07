@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="link_box">
+		<%= link_to 'Главная', root_path %> &gt;
+		<%= link_to @genre.title, class: "link_box_title" %>
+	</div>
+	<h1><%= @genre.title %></h1>
+	<div class="disc-box">
+		<p><%= @genre.description %></p>		
+	</div>
+	
+	<br>
+	<div class="title_genre2">Книги в жанре:&nbsp;<b><%= @genre.title %></b></div>
+	<div class="genre_wrap">
+		<% @genre.books.each do |book| %>		
+			<div class="book_box col-md-4">
+				<div class="book_img">
+					<%= image_tag "/uploads/books/#{book.id}", size: '100' %>
+				</div>
+				<div class="book_title">
+					<%= link_to book.title, users_show_book_path(book)%>	
+				
+				</div>
+				<div class="book_title">
+					<span>Автор:&nbsp;</span><%= link_to book.author.title, users_show_author_path(book.author.id) %>
+				</div>				
+
+			</div>	
+		<% end %>
+	</div>
+	
+</div>

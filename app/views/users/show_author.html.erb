@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="link_box">
+		<%= link_to 'Авторы', users_index_author_path %> &gt;
+		<%= link_to @author.title %>
+	</div>
+	<h1><%= @author.title%></h1>
+	<br>
+	<div class="author_row clearfix">
+		
+		<div class="author_block  col-md-4">
+			<div class="author_img_block">
+				<p><%= image_tag "/uploads/authors/#{@author.id}", size: '100' %></p>		
+			</div>		
+		</div>
+		<div class="disc-box col-md-8">
+			<p><%= @author.description %></p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="title_author2">Книги автора:&nbsp;<b><%= @author.title %></b></div>
+		<% @author.books.each do |book| %>		
+			<div class="book_box col-md-4">
+				<div class="book_img">
+					<%= image_tag "/uploads/books/#{book.id}", size: '100' %>
+				</div>
+				<div class="book_title">
+					<%= link_to book.title, users_show_book_path(book)%>	
+				
+				</div>
+				<div class="book_title">
+					<span>Автор:&nbsp;</span><%= link_to book.author.title, users_show_author_path(book.author.id) %>
+				</div>				
+				<div class="price">
+					<span>Цена:</span><b><%= book.price %></b>
+				</div>
+			</div>	
+		<% end %>
+	</div>
+	
+</div>

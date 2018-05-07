@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="link_box">
+		<%= link_to 'Главная', root_path %>&gt;
+		<%= link_to @book.genre.title, users_show_genre_path(@book.genre.id) %>&gt;
+		<b><%= link_to @book.title %></b>		
+	</div>
+	
+	<div class="book_box show_b_mt">
+
+		<p class="title_p"><%= link_to @book.author.title, users_show_author_path(@book.author.id), class: "link_title_p" %></p>
+		<p class="book_title show_book_title">
+			<b><%= @book.title %></b>
+		</p>			
+		<p class="genre_title_show">
+			Жанр:&nbsp;<b><%=link_to @book.genre.title, users_show_genre_path(@book.genre.id), class: "genre_link" %></b>
+		</p>
+		<span class="price">Цена:&nbsp;<b><%= @book.price %></b></span>
+		<div class="book_img show_img_book">
+			<%= image_tag "/uploads/books/#{@book.id}", size: '100' %>
+		</div>
+		<div class="dscrpt_book"><%= @book.description %></div>
+	</div>
+
+
+	<h2 class="comm_h2">
+		<%= link_to 'Отзывов', '#', id: 'comments-link' %>&nbsp;&nbsp;<%= @book.comments.length %>
+	</h2>
+	
+	<section id="comment-section" class="users_page">			
+		<ol id="comments">
+			<%= render @book.comments %>
+		</ol>
+
+  	<h2>Добавить отзыв:</h2>
+
+  	<%= render 'comments/formbooks' %>
+	
+	</section>
+</div>

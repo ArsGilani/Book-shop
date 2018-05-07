@@ -1,0 +1,41 @@
+<div class="container">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<p><%= image_tag "logo.png", width: '60', height: '100', class: "navbar-brand" %></p>
+				
+			</div>			
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><%= link_to 'Жанры', root_path %></li>
+					<li><%= link_to 'Книги', users_index_book_path %></li>
+					<li><%= link_to 'Авторы', users_index_author_path %></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to 'Adminpanel', books_path %></a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<h1>Жанры</h1>
+	
+	<div class="genre_wrap">
+		
+		<% @genres.each do |genre| %>
+		<div class="genre_wrap_in">
+			<p><%= link_to genre.title, users_show_genre_path(genre) %></p>
+			
+			
+			
+		</div>
+		<% end %>
+	</div>
+</div>

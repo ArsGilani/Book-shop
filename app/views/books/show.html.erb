@@ -1,0 +1,26 @@
+<div class="container">
+	
+	<h1><%= @book.title%></h1>
+	<div class="disc-box">
+		<p><%= @book.description %></p>		
+	</div>
+	<div class="price-box">
+		price: <b><%= @book.price %></b>
+		
+	</div>
+	<br>
+	<%= link_to 'Back', books_path%>
+
+	<h2><%= link_to 'Comments', '#', id: 'comments-link' %>
+		<%= @book.comments.length %> </h2>
+		<section id="comment-section">
+
+		 <ol id="comments">
+		    <%= render @book.comments %>
+		  </ol>
+
+		  <h2>Добавить отзыв:</h2>
+
+		  <%= render 'comments/formbooks' %>
+		</section>
+</div>
